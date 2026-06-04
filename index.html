@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNIB NetPath Engine</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="bg-container"></div>
+
+    <div class="unib-header-bar">
+        <div class="unib-header-content" style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+            
+            <div style="display: flex; align-items: center; gap: 14px;">
+                <img src="unib.png" alt="UNIVERSITAS BENGKULU" style="height: 42px; width: auto;">
+                <div class="unib-header-text">
+                    <span class="title-main" style="font-size: 15px; font-weight: 800; color: #0369a1; letter-spacing: 0.5px;">UNIVERSITAS BENGKULU</span>
+                </div>
+            </div>
+
+            <div style="display: flex; align-items: center; gap: 12px; text-align: right;">
+                <div style="display: flex; flex-direction: column;">
+                    <span style="font-size: 14px; font-weight: 700; color: #0f172a; letter-spacing: -0.2px;">Aggra Kurnia Idhan</span>
+                    <span style="font-size: 11px; font-weight: 600; color: #0369a1; margin-top: 1px; letter-spacing: 0.5px;">G1A024003</span>
+                </div>
+                
+                <div style="width: 36px; height: 36px; border: 1px solid #cbd5e1; border-radius: 50%; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #f1f5f9;">
+                    <img src="Aggra.jpeg" alt="Foto Profil" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+            </div>
+
+        </div> 
+    </div> <div class="main-content">
+
+        <div class="sidebar">
+            <div class="brand">
+                <h1>UNIB NetPath Engine</h1>
+                <p><i class="fa-solid fa-location-dot"></i> Universitas Bengkulu</p>
+            </div>
+
+            <div class="input-group">
+                <div class="field">
+                    <label><i class="fa-solid fa-circle-dot" style="color: #0070f3;"></i> Titik Awal</label>
+                    <select id="start"></select>
+                </div>
+
+                <div class="field">
+                    <label><i class="fa-solid fa-location-crosshairs" style="color: #ff3d00;"></i> Tujuan</label>
+                    <select id="destination"></select>
+                </div>
+
+                <div class="field">
+                    <label><i class="fa-solid fa-motorcycle"></i> Mode Transportasi</label>
+                    <select id="vehicle">
+                        <option value="walk">Jalan Kaki</option>
+                        <option value="drive">Motor / Mobil</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="searchBtn" onclick="findRoute()">
+                <span>Cari Jalur Terbaik</span> <i class="fa-solid fa-arrow-trend-up"></i>
+            </button>
+
+            <button id="clearBtn" onclick="clearRoute()">
+                <span>Hapus Rute</span> <i class="fa-solid fa-trash-can"></i>
+            </button>
+
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-route"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Jarak</span>
+                        <span id="distance" class="stat-value">-</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fa-solid fa-clock"></i></div>
+                    <div class="stat-info">
+                        <span class="stat-label">Waktu</span>
+                        <span id="duration" class="stat-value">-</span>
+                    </div>
+                </div>
+                <div id="dynamic-stat" class="stat-card highlight">
+                    <div class="stat-icon"><i id="dynamic-icon" class="fa-solid fa-bolt"></i></div>
+                    <div class="stat-info">
+                        <span id="dynamic-label" class="stat-label">Info</span>
+                        <span id="dynamic-value" class="stat-value">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="instructions-wrapper">
+                <h3>Panduan Rute A*</h3>
+                <div id="instructions"></div>
+            </div>
+        </div>
+
+        <div class="map-wrapper">
+            <div id="map"></div>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
