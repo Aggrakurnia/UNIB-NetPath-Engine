@@ -46,6 +46,11 @@ Sebagai instrumen digital pendukung gerakan *Green Campus* Universitas Bengkulu,
 ## Struktur API (Application Programming Interface)
 Sistem menjamin kelancaran komunikasi data antarmuka menggunakan format pertukaran data JSON melalui metode `HTTP POST` / `HTTP GET` dengan spesifikasi struktur payload sebagai berikut:
 
+ ### Endpoint: `/api/v1/route`
+**Request Payload (JSON):**
+```json
+{
+  "starting_point": [-3.7554, 102.2743],
   "destination_point": [-3.7592, 102.2781],
   "transport_mode": "motorcycle"
 }
